@@ -317,3 +317,8 @@ document.addEventListener("DOMContentLoaded", async ()=> {
   }
 });
 
+window.simpanHariIni = simpanHariIni;
+window.logout = logout;
+
+
+
