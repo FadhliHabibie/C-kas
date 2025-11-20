@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>History - Pencatatan Keuangan</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="topbar">
+    <button onclick="location.href='dashboard.html'">Dashboard</button>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <div class="card">
+    <h2>History Harian</h2>
+    <div id="days_list"></div>
+
+    <div id="detail_day" style="display:none; margin-top:12px;">
+      <h3 id="detail_title"></h3>
+      <p id="detail_penjualan"></p>
+      <p id="detail_pengeluaran"></p>
+      <p id="detail_laba"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

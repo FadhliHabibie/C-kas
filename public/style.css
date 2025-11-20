@@ -1,0 +1,6 @@
+body { font-family: Arial, sans-serif; background: #f4f6f8; padding: 20px; }
+.card { max-width: 480px; margin: 20px auto; background: #fff; padding: 18px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.08); }
+input { width: 100%; padding: 10px; margin-top: 8px; border-radius: 8px; border: 1px solid #ddd; font-size: 16px; box-sizing: border-box; }
+button { width: 100%; padding: 12px; margin-top: 12px; border-radius: 8px; border: none; background: #1e90ff; color: #fff; font-size: 16px; cursor: pointer; }
+.topbar { max-width:480px; margin: 10px auto; display:flex; justify-content:space-between; gap:10px; }
+#days_list button { display:block; width:100%; text-align:left; padding:10px; margin-top:6px; border-radius:8px; border:1px solid #ddd; background:#fafafa; cursor:pointer; }

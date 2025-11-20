@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard - Pencatatan Keuangan</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="topbar">
+    <button onclick="location.href='history.html'">History</button>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <div class="card">
+    <h2>Input Hari Ini</h2>
+
+    <label>Penjualan (Rp)</label>
+    <input id="jual_input" type="number" placeholder="Masukkan jumlah penjualan hari ini">
+
+    <label>Pengeluaran (Rp)</label>
+    <input id="keluar_input" type="number" placeholder="Masukkan jumlah pengeluaran hari ini">
+
+    <button id="simpanBtn" onclick="simpanHariIni()">SIMPAN</button>
+
+    <div id="hasil_today" style="display:none; margin-top:16px;">
+      <h3>Hasil Hari Ini</h3>
+      <p id="penjualan_today"></p>
+      <p id="pengeluaran_today"></p>
+      <p id="laba_today"></p>
+    </div>
+
+    <div id="grafik_section" style="display:none; margin-top:20px;">
+      <h3>Grafik Penjualan Minggu Ini</h3>
+      <canvas id="chartLine" width="400" height="200"></canvas>
+    </div>
+
+    <div id="prediksi_section" style="display:none; margin-top:20px;">
+      <h3>Prediksi Pengeluaran Bahan Baku</h3>
+      <p id="prediksi_text"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
