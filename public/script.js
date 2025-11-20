@@ -40,27 +40,66 @@ function logout() {
 
 async function simpanHariIni() {
   const token = localStorage.getItem("token");
-  if (!token) { alert("Silakan login ulang"); location.href = "index.html"; return; }
-
-  const penjualan = Number(document.getElementById("jual_input").value) || 0;
-  const pengeluaran = Number(document.getElementById("keluar_input").value) || 0;
-
-  // Simpan penjualan dan pengeluaran (dua request)
-  if (penjualan > 0) {
-    await fetch("/api/penjualan_add", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "Authorization": "Bearer " + token },
-      body: JSON.stringify({ jumlah: penjualan, keterangan: "input manual" })
-    });
+  if (!token) {
+    alert("Silakan login ulang");
+    location.href = "index.html";
+    return;
   }
 
-  if (pengeluaran > 0) {
-    await fetch("/api/pengeluaran_add", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "Authorization": "Bearer " + token },
-      body: JSON.stringify({ jumlah: pengeluaran, keterangan: "input manual" })
-    });
+  const penjualan = Number(jual_input.value) || 0;
+  const pengeluaran = Number(keluar_input.value) || 0;
+
+  try {
+
+    if (penjualan > 0) {
+      const res1 = await fetch("/api/penjualan_add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + token
+        },
+        body: JSON.stringify({
+          jumlah: penjualan,
+          keterangan: ""  // <--- FIX
+        })
+      });
+
+      const d1 = await res1.json();
+      if (d1.error) {
+        alert("Error penjualan: " + d1.error);
+        return;
+      }
+    }
+
+    if (pengeluaran > 0) {
+      const res2 = await fetch("/api/pengeluaran_add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + token
+        },
+        body: JSON.stringify({
+          jumlah: pengeluaran,
+          keterangan: "" // <--- FIX
+        })
+      });
+
+      const d2 = await res2.json();
+      if (d2.error) {
+        alert("Error pengeluaran: " + d2.error);
+        return;
+      }
+    }
+
+    // tampilkan hasil
+    await tampilkanHasilDanGrafik();
+    alert("Data berhasil disimpan!");
+
+  } catch (e) {
+    alert("Kesalahan jaringan: " + e.message);
   }
+}
+
 
   // setelah simpan, tampilkan hasil hari ini + grafik + prediksi
   await tampilkanHasilDanGrafik();
@@ -277,3 +316,4 @@ document.addEventListener("DOMContentLoaded", async ()=> {
     await loadHistory();
   }
 });
+
