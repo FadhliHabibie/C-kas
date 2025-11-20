@@ -101,10 +101,6 @@ async function simpanHariIni() {
 }
 
 
-  // setelah simpan, tampilkan hasil hari ini + grafik + prediksi
-  await tampilkanHasilDanGrafik();
-}
-
 async function tampilkanHasilDanGrafik() {
   const token = localStorage.getItem("token");
   const res = await fetch("/api/history", {
@@ -319,6 +315,7 @@ document.addEventListener("DOMContentLoaded", async ()=> {
 
 window.simpanHariIni = simpanHariIni;
 window.logout = logout;
+
 
 
 
